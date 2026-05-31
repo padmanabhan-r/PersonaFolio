@@ -1,4 +1,4 @@
-// Option A — native D-ID agent bootstrapper.
+// D-ID agent bootstrapper (native D-ID reasoning + voice).
 // Creates the client tools from agent/tools.json, then attaches them + the
 // interview instructions (agent/instructions.md) to a D-ID agent.
 //

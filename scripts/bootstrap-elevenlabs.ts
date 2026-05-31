@@ -1,6 +1,6 @@
-// Option B — ElevenLabs Conversational AI agent (driven through D-ID's external_agent).
+// ElevenLabs Conversational AI agent (driven through D-ID's external_agent).
 // Creates the client tools + an EL agent, then prints the agent_id and the D-ID Studio
-// hand-off steps. This is the Plan-B path; Option A (bootstrap-agent.ts) is the primary.
+// hand-off steps.
 //
 // Usage: npm run bootstrap:elevenlabs
 //
