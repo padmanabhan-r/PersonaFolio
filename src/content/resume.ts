@@ -17,76 +17,65 @@ export interface EducationEntry {
   location: string;
 }
 
+// Kept deliberately generic — domain + impact, no employer-identifying specifics or dates.
 export const experience: ExperienceEntry[] = [
   {
     company: "Global Automotive Company",
     roles: [
       {
-        title: "Technical Architect | Applied AI",
-        period: "Feb 2021 – Present",
+        title: "Technical Architect · Applied AI",
+        period: "Current",
         bullets: [
           "Lead end-to-end delivery of enterprise AI solutions for document intelligence, regulatory compliance, and engineering productivity.",
-          "Architected an AI-powered compliance validation platform that reduced manual review effort by ~98%.",
-          "Delivered annual cost savings exceeding $250K through automated supplier compliance verification.",
-          "Designed a custom RAG framework for large regulatory documents, cutting review time by more than 95%.",
-          "Built agentic workflows for requirement classification, dependency mapping, and impact analysis.",
-          "Led large-scale crash data analytics to reduce dependence on physical crash prototypes.",
-          "Developed ML models for crash simulation using sequence modeling and synthetic data generation.",
-          "Built executive dashboards and visualization platforms that accelerated safety decision making.",
+          "Architected an AI-powered compliance-validation platform that dramatically reduced manual review effort.",
+          "Delivered significant recurring cost savings through automated compliance verification.",
+          "Designed a custom RAG framework for large, complex documents, cutting review time substantially.",
+          "Built agentic workflows for classification, dependency mapping, and impact analysis.",
+          "Led data analytics and ML modeling to reduce reliance on physical prototype testing, with executive dashboards for decision-making.",
         ],
       },
     ],
   },
   {
-    company: "Simon Fraser University",
+    company: "Research University",
     roles: [
       {
-        title: "Data Analyst",
-        period: "May 2020 – Sep 2020",
+        title: "Data Analyst · Research Assistant",
+        period: "Earlier",
         bullets: [
           "Delivered production-grade ML and analytics solutions for external industry clients.",
-          "Deployed TensorFlow Lite computer-vision models for mobile fish species identification.",
-          "Implemented lightweight object detection (SSD MobileNet, Faster R-CNN).",
-        ],
-      },
-      {
-        title: "Big Data Analyst & Teaching Assistant",
-        period: "Jan 2019 – May 2020",
-        bullets: [
-          "Conducted applied machine learning research during Master's studies.",
-          "Built data pipelines, predictive models, and analytics solutions.",
-          "Supported teaching for database and big data systems courses.",
+          "Deployed lightweight computer-vision models for on-device inference.",
+          "Conducted applied machine-learning research during graduate studies.",
+          "Built data pipelines, predictive models, and object-detection architectures.",
+          "Supported teaching for database and big-data systems courses.",
         ],
       },
     ],
   },
   {
-    company: "Latecoere Aerostructures Canada (Avcorp Industries)",
+    company: "Aerospace Manufacturer",
     roles: [
       {
-        title: "Data Analyst",
-        period: "May 2019 – Aug 2019",
+        title: "Data Scientist",
+        period: "Earlier",
         bullets: [
-          "Developed end-to-end analytics solutions for aerospace manufacturing operations.",
-          "Automated data collection pipelines, reducing manual effort by over 80%.",
-          "Built ML models for predictive maintenance with 90%+ classification accuracy for chemical tank failure.",
+          "Built end-to-end analytics solutions for manufacturing operations.",
+          "Automated data-collection pipelines, cutting manual effort significantly.",
+          "Developed high-accuracy ML models for predictive maintenance.",
         ],
       },
     ],
   },
   {
-    company: "Data Warehousing & BI",
+    company: "Global Banking Company",
     roles: [
       {
-        title: "Programmer Analyst / Associate",
-        period: "Sep 2012 – Jul 2018",
+        title: "Data Engineer",
+        period: "Early career",
         bullets: [
-          "Delivered large-scale data warehousing solutions for banking and retail clients.",
-          "Built ETL pipelines using Informatica and Ab Initio.",
-          "Worked extensively with Teradata, SQL, and enterprise reporting platforms.",
-          "Designed and enhanced enterprise ETL and BI solutions.",
-          "Improved data pipeline reliability and reporting performance.",
-          "Partnered with stakeholders on planning, delivery, and business reporting.",
+          "Delivered large-scale data-warehousing solutions for enterprise clients.",
+          "Built and maintained ETL pipelines and enterprise reporting platforms.",
+          "Improved pipeline reliability and reporting performance; partnered with stakeholders on delivery.",
         ],
       },
     ],
@@ -94,7 +83,7 @@ export const experience: ExperienceEntry[] = [
 ];
 
 export const skills: SkillGroup[] = [
-  { category: "Programming", items: ["Python", "SQL"] },
+  { category: "Programming", items: ["Python", "TypeScript", "JavaScript", "SQL"] },
   {
     category: "AI & Machine Learning",
     items: [

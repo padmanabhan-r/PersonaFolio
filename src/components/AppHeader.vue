@@ -3,6 +3,7 @@ import { onMounted, onUnmounted, ref } from "vue";
 import { SECTIONS } from "@/content/sections";
 import { useActiveSection } from "@/composables/useActiveSection";
 import { goToSection, goHome } from "@/composables/useRoute";
+import SoundToggle from "./SoundToggle.vue";
 
 const { activeSection } = useActiveSection();
 const hidden = ref(false);
@@ -33,9 +34,13 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
           @click="goToSection(s.id)"
         >
           {{ s.label }}
+          <span v-if="s.id === 'elevenhacks'" class="hot">Hot</span>
         </button>
       </nav>
-      <button class="cta mono" @click="goToSection('contact')" data-cursor="say hi">Get in touch</button>
+      <div class="header-actions">
+        <button class="cta mono" @click="goToSection('contact')" data-cursor="say hi">Get in touch</button>
+        <SoundToggle />
+      </div>
     </div>
   </header>
 </template>
@@ -82,6 +87,7 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 }
 
 .nav-link {
+  position: relative;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 11px;
@@ -93,13 +99,45 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
     background 0.2s var(--ease);
 
   &:hover {
-    color: var(--text);
+    color: var(--accent-ink);
+    background: var(--accent);
   }
 
   &.active {
     color: var(--accent-text);
     background: rgba(199, 154, 58, 0.16);
   }
+
+  &.active:hover {
+    color: var(--accent-ink);
+    background: var(--accent);
+  }
+}
+
+.hot {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  font-family: var(--f-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: #fff;
+  background: #e0552b;
+  border: 1px solid var(--manga-ink);
+  border-radius: 999px;
+  padding: 1px 5px;
+  transform: rotate(9deg);
+  box-shadow: 1px 1px 0 var(--manga-ink);
+  pointer-events: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .cta {

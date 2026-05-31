@@ -13,10 +13,12 @@ import ProjectPage from "./components/ProjectPage.vue";
 import { useScroll } from "./composables/useScroll";
 import { useRoute, activeSlug } from "./composables/useRoute";
 import { useDidAgent } from "./composables/useDidAgent";
+import { useSounds } from "./composables/useSounds";
 
 useScroll();
 useRoute();
 useDidAgent();
+useSounds();
 
 // A project route replaces the home view entirely (standalone page, not a popup).
 const onProject = computed(() => activeSlug.value !== null);

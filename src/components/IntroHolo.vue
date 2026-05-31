@@ -135,6 +135,38 @@ const focus = [
   }
 }
 
+/* gentle floating — staggered durations/offsets so the panels don't bob in unison */
+@keyframes floaty-a {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes floaty-b {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-13px); }
+}
+@keyframes floaty-c {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.panel-name {
+  animation: floaty-a 5s ease-in-out infinite;
+}
+.panel-bio {
+  animation: floaty-b 6s ease-in-out infinite 0.8s;
+}
+.panel-skills {
+  animation: floaty-c 4.6s ease-in-out infinite 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-name,
+  .panel-bio,
+  .panel-skills {
+    animation: none;
+  }
+}
+
 /* connector stubs toward the central figure (desktop only) */
 .lead {
   display: none;

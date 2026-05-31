@@ -1,5 +1,6 @@
 import { onMounted, onUnmounted } from "vue";
 import { openProject, goToSection, goHome } from "./useRoute";
+import { slowScrollThrough } from "./useScroll";
 import { getSection, SECTION_IDS } from "@/content/sections";
 import { projectIds } from "@/content/projects";
 
@@ -31,6 +32,8 @@ export const useDidAgent = () => {
     const section = getSection(String(raw.section_id ?? ""));
     if (!section) return fail("unknown_section", { available: SECTION_IDS });
     goToSection(section.id);
+    // Let the jump settle, then slowly glide through the section while the agent talks.
+    window.setTimeout(() => slowScrollThrough("#" + section.elementId), 1300);
     return ok({ section_id: section.id });
   };
 
@@ -38,6 +41,7 @@ export const useDidAgent = () => {
     if (!isObj(raw)) return fail("invalid_args");
     const slug = String(raw.slug ?? "");
     if (!openProject(slug)) return fail("unknown_project", { available: projectIds });
+    window.setTimeout(() => slowScrollThrough(".project"), 1300);
     return ok({ slug });
   };
 

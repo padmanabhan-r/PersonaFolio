@@ -7,7 +7,7 @@ export const profile = {
   name: "Padmanabhan",
   handle: "@Limb",
   label: "SWE | Applied AI | @Limb",
-  role: "Software Engineer · Applied AI",
+  role: "Software Engineer · Applied AI · Builder",
   location: "India",
   x: "https://x.com/__padmanabhan",
   tagline: "I turn business goals into production-grade AI products that ship and scale.",

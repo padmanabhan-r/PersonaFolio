@@ -5,8 +5,17 @@ const dot = ref<HTMLElement | null>(null);
 const ring = ref<HTMLElement | null>(null);
 const enabled = ref(false);
 const on = ref(false);
+const trail = ref<HTMLElement | null>(null);
 
 const HOVER_SEL = "[data-cursor], a, button, .pcard, .nav-link, .filter, .social";
+
+// Code-ish tokens that briefly trail the cursor.
+const SNIPPETS = [
+  "def train()", "import torch", "return x", "async def", "lambda x:", "np.array()",
+  "model.fit()", "yield", "await agent", "@tool", "RAG", "tensor[i]", "for i in range",
+  "try:", "pip install", "embed(x)", "llm.invoke()", "print(x)", "if __name__",
+  "gradient", "0xF3A9", "self.forward", "LangGraph", "CrewAI", "x => x", "vector[]",
+];
 
 let raf = 0;
 let tx = 0;
@@ -15,10 +24,39 @@ let dx = 0;
 let dy = 0;
 let rx = 0;
 let ry = 0;
+let lastSx = -999;
+let lastSy = -999;
+let reduceMotion = false;
+
+const spawnToken = (x: number, y: number) => {
+  const c = trail.value;
+  if (!c) return;
+  const el = document.createElement("span");
+  el.className = "trail-token mono";
+  el.textContent = SNIPPETS[Math.floor(Math.random() * SNIPPETS.length)]!;
+  el.style.left = `${x}px`;
+  el.style.top = `${y}px`;
+  const ox = Math.random() * 22 - 11;
+  const rot = Math.random() * 16 - 8;
+  c.appendChild(el);
+  const anim = el.animate(
+    [
+      { opacity: 0.4, transform: `translate(-50%, -50%) rotate(${rot}deg)` },
+      { opacity: 0, transform: `translate(calc(-50% + ${ox}px), -130%) rotate(${rot}deg)` },
+    ],
+    { duration: 1500, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+  );
+  anim.onfinish = () => el.remove();
+};
 
 const move = (e: PointerEvent) => {
   tx = e.clientX;
   ty = e.clientY;
+  if (!reduceMotion && Math.hypot(tx - lastSx, ty - lastSy) > 38) {
+    lastSx = tx;
+    lastSy = ty;
+    spawnToken(tx, ty);
+  }
 };
 
 const over = (e: Event) => {
@@ -41,6 +79,7 @@ const tick = () => {
 
 onMounted(() => {
   if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   enabled.value = true;
   tx = ty = dx = dy = rx = ry = -100;
   window.addEventListener("pointermove", move);
@@ -59,6 +98,7 @@ onUnmounted(() => {
 
 <template>
   <template v-if="enabled">
+    <div ref="trail" class="cursor-trail" aria-hidden="true"></div>
     <div ref="ring" class="cursor-ring" :class="{ on }"></div>
     <div ref="dot" class="cursor-dot" :class="{ on }"></div>
   </template>
@@ -76,33 +116,59 @@ onUnmounted(() => {
 }
 
 .cursor-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--text);
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  box-shadow: 0 1px 5px rgba(28, 18, 6, 0.45);
   transition:
-    background 0.2s var(--ease),
+    width 0.2s var(--ease),
+    height 0.2s var(--ease),
     opacity 0.2s var(--ease);
 }
 
 .cursor-ring {
-  width: 34px;
-  height: 34px;
-  border: 1.5px solid var(--border-strong, rgba(80, 50, 20, 0.35));
+  width: 36px;
+  height: 36px;
+  border: 2.5px solid var(--accent);
+  box-shadow:
+    0 1px 6px rgba(28, 18, 6, 0.3),
+    inset 0 0 0 1px rgba(28, 18, 6, 0.12);
   transition:
     width 0.28s var(--ease),
     height 0.28s var(--ease),
-    border-color 0.28s var(--ease),
+    border-width 0.28s var(--ease),
     background 0.28s var(--ease);
 }
 
 .cursor-ring.on {
-  width: 46px;
-  height: 46px;
-  border-color: var(--accent);
-  background: rgba(199, 154, 58, 0.1);
+  width: 50px;
+  height: 50px;
+  border-width: 3px;
+  background: rgba(199, 154, 58, 0.14);
 }
 
 .cursor-dot.on {
-  background: var(--accent);
+  width: 6px;
+  height: 6px;
+}
+
+/* fading code trail */
+.cursor-trail {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
+}
+.cursor-trail :deep(.trail-token) {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--accent-text);
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(28, 18, 6, 0.18);
+  will-change: transform, opacity;
 }
 </style>

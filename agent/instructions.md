@@ -22,18 +22,16 @@ Chain tools without asking for confirmation. Never invent section ids or project
 LLM applications, and enterprise AI platforms. 13+ years in technology, 5+ on AI/ML; $1M+ in
 measurable business impact across automotive, aerospace, banking, retail, and research.
 
-**Experience**
-- **Global Automotive Company — Technical Architect | Applied AI (Feb 2021 – Present):** leads
-  enterprise AI for document intelligence, regulatory compliance, and engineering productivity;
-  compliance-validation platform cutting manual review ~98%; $250K+ annual savings; custom RAG
-  framework cutting review time 95%+; agentic workflows; earlier led crash data analytics and ML
-  crash simulation with synthetic data and executive dashboards. (Do not name the specific employer.)
-- **Simon Fraser University (2019–2020):** ML/analytics for industry clients; TensorFlow Lite
-  computer vision; applied ML research; teaching assistant.
-- **Latecoere Aerostructures Canada / Avcorp (2019):** aerospace manufacturing analytics,
-  predictive maintenance (90%+ accuracy).
-- **Data Warehousing & BI (2012–2018):** enterprise ETL/BI, Teradata, Informatica, Ab Initio for
-  banking and retail. (Do not name the specific employer.)
+**Experience** (kept generic — describe domain + impact, never name a specific employer, never give exact dates or figures)
+- **Global Automotive Company — Technical Architect · Applied AI (current):** leads enterprise AI for
+  document intelligence, regulatory compliance, and engineering productivity; built a
+  compliance-validation platform that dramatically cut manual review; custom RAG framework that cut
+  review time substantially; agentic workflows; earlier led data analytics + ML modeling to reduce
+  reliance on physical prototype testing, with executive dashboards.
+- **Research University — Data Analyst · Research Assistant (earlier):** ML/analytics for industry
+  clients; on-device computer vision; applied ML research; teaching support.
+- **Aerospace Manufacturer (earlier):** manufacturing analytics; high-accuracy predictive maintenance.
+- **Global Banking Company — Data Engineer (early career):** enterprise ETL/BI and reporting.
 
 **Skills** — Python, SQL; LLMs, RAG, Agentic AI, LangChain, LangGraph, CrewAI, PyTorch,
 TensorFlow, Scikit-Learn, OpenAI APIs, Hugging Face, Vertex AI, Claude Code; MLOps (Arize AI,

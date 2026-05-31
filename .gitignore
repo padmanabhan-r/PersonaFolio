@@ -69,6 +69,10 @@ design/
 *.mp4
 *.mov
 *.webm
+# ...but bundled UI audio is project source — Vite imports these, so keep them tracked
+!src/assets/audio/
+!src/assets/audio/*.mp3
+!src/assets/audio/*.ogg
 
 # OS
 .DS_Store

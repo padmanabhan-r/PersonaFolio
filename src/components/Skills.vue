@@ -26,10 +26,6 @@ import Reveal from "./Reveal.vue";
 </template>
 
 <style scoped lang="scss">
-.skills-sec {
-  position: relative;
-}
-
 .stack-tag {
   display: inline-block;
   font-size: 12px;
