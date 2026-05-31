@@ -45,10 +45,24 @@ export const closeProject = () => {
 export const goToSection = (idOrAlias: string, duration = 1.1): boolean => {
   const section = getSection(idOrAlias);
   if (!section) return false;
-  activeSlug.value = null; // close any open overlay
+  const wasOnProject = activeSlug.value !== null;
+  activeSlug.value = null; // close any open project page
   const path = `/${section.id}`;
   if (window.location.pathname !== path) window.history.pushState({}, "", path);
-  scrollToTarget("#" + section.elementId, duration);
+
+  const doScroll = () => scrollToTarget("#" + section.elementId, duration);
+  if (wasOnProject) {
+    // Home was hidden (v-show) while the project page showed — wait for it to re-render
+    // and refresh the pinned ScrollTriggers before scrolling, or we'd land on the hero.
+    requestAnimationFrame(() =>
+      window.setTimeout(() => {
+        ScrollTrigger.refresh();
+        doScroll();
+      }, 120),
+    );
+  } else {
+    doScroll();
+  }
   return true;
 };
 
