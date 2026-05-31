@@ -49,9 +49,10 @@ coverage/
 .opencode/
 *.claude*
 
-# Root-level markdown — local planning/docs stay out of repo (keep README)
+# Root-level markdown — local planning/docs stay out of repo (keep README + CHANGELOG)
 /*.md
 !README.md
+!CHANGELOG.md
 CLAUDE.md
 
 # Project docs + scratch (local reference, not for repo)
