@@ -7,7 +7,7 @@ const year = 2026;
   <footer class="footer">
     <div class="container footer-inner">
       <p class="mono">© {{ year }} {{ profile.name }}</p>
-      <p class="mono dim">Built with Vue · GSAP · ElevenLabs · D-ID</p>
+      <p class="mono dim">Built with ElevenLabs · D-ID</p>
     </div>
   </footer>
 </template>

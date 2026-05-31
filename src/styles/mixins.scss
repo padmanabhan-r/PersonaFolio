@@ -30,3 +30,10 @@ $breakpoints: (
     @content;
   }
 }
+
+// Comic "sticker" depth for Bangers display titles on light backgrounds.
+@mixin manga-pop($shadow: var(--accent)) {
+  text-shadow:
+    3px 3px 0 $shadow,
+    5px 5px 0 rgba(28, 18, 6, 0.12);
+}

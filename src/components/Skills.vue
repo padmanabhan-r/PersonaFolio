@@ -49,6 +49,7 @@ import Reveal from "./Reveal.vue";
   color: var(--manga-ink);
   margin: var(--s-3) 0 var(--s-7);
   transform: rotate(-1.5deg);
+  @include manga-pop;
 }
 
 .sgrid {

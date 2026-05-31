@@ -163,6 +163,8 @@ onUnmounted(() => {
 .cursor-trail :deep(.trail-token) {
   position: fixed;
   transform: translate(-50%, -50%);
+  /* keep the floating code monospace even though --f-mono is now the manga label font */
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 10.5px;
   font-weight: 400;
   letter-spacing: 0.02em;

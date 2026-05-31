@@ -94,7 +94,7 @@ ol {
 
 .mono {
   font-family: var(--f-mono);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .container {
@@ -139,4 +139,5 @@ ol {
   letter-spacing: 0.01em;
   line-height: 0.98;
   margin: var(--s-4) 0 var(--s-7);
+  @include manga-pop;
 }

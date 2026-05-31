@@ -150,6 +150,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
   letter-spacing: 0.01em;
   margin: var(--s-5) 0 var(--s-3);
   transform: rotate(-1deg);
+  @include manga-pop;
 }
 
 .phero-blurb {

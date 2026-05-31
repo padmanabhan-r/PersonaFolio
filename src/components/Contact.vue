@@ -69,6 +69,7 @@ import connectBg from "@/content/images/connect.png";
 .contact-title {
   font-size: clamp(2.4rem, 7vw, 5rem);
   margin: var(--s-3) 0;
+  @include manga-pop;
 
   em {
     font-style: italic;

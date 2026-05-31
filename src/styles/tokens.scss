@@ -35,7 +35,7 @@
   /* type — manga-forward: Bangers titles, Comic Neue body, mono labels */
   --f-display: "Bangers", "Anton", system-ui, cursive; /* big titles */
   --f-sans: "Comic Neue", "Space Grotesk", system-ui, sans-serif; /* body */
-  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --f-mono: "Anton", "Bebas Neue", system-ui, sans-serif; /* manga label font (condensed caps) — NOT monospace; the code cursor-trail sets its own mono */
   --f-manga: "Bangers", "Anton", system-ui, cursive; /* == display; swap order to dial down */
 
   /* manga / comic ink + sticky-note tones (anime restyle) */
