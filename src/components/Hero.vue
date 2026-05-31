@@ -3,6 +3,10 @@ import { computed, ref, onMounted, onUnmounted } from "vue";
 import { profile } from "@/content/profile";
 import { goToSection } from "@/composables/useRoute";
 import heroBg from "@/content/images/hero.png";
+import heroVid from "@/content/images/hero.mp4";
+
+// Static poster under reduced-motion; otherwise the looping clip plays.
+const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Cycle the big hero title between the name and the handle.
 const names = [profile.name, profile.handle];
@@ -21,7 +25,18 @@ onUnmounted(() => clearInterval(timer));
 
 <template>
   <section id="hero" class="hero">
-    <img class="hero-bg" :src="heroBg" alt="" aria-hidden="true" fetchpriority="high" />
+    <video
+      v-if="!reduceMotion"
+      class="hero-bg"
+      :src="heroVid"
+      :poster="heroBg"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+    ></video>
+    <img v-else class="hero-bg" :src="heroBg" alt="" aria-hidden="true" fetchpriority="high" />
     <div class="hero-scrim" aria-hidden="true"></div>
     <div class="hero-burst" aria-hidden="true"></div>
 

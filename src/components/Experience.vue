@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { experience } from "@/content/resume";
 import Reveal from "./Reveal.vue";
-import Tag from "./Tag.vue";
 </script>
 
 <template>
@@ -12,17 +11,15 @@ import Tag from "./Tag.vue";
         <h2 class="section-title">A decade building data &amp; AI systems.</h2>
       </Reveal>
 
-      <ol class="timeline">
-        <Reveal v-for="(entry, i) in experience" :key="entry.company" :delay="i * 0.05">
-          <article class="card">
-            <h3 class="card-company">{{ entry.company }}</h3>
-            <div v-for="role in entry.roles" :key="role.title + role.period" class="role">
-              <div class="role-head">
-                <p class="role-title">{{ role.title }}</p>
-                <p class="role-period mono">{{ role.period }}</p>
-              </div>
-              <ul class="role-bullets">
-                <li v-for="b in role.bullets" :key="b">{{ b }}</li>
+      <ol class="exp-grid">
+        <Reveal v-for="(entry, i) in experience" :key="entry.company" :delay="i * 0.06">
+          <article class="exp-card">
+            <h3 class="exp-company">{{ entry.company }}</h3>
+            <div v-for="role in entry.roles" :key="role.title + role.period" class="exp-role-block">
+              <p class="exp-role">{{ role.title }}</p>
+              <p class="exp-period mono">{{ role.period }}</p>
+              <ul class="exp-bullets">
+                <li v-for="b in role.bullets.slice(0, 3)" :key="b">{{ b }}</li>
               </ul>
             </div>
           </article>
@@ -33,67 +30,91 @@ import Tag from "./Tag.vue";
 </template>
 
 <style scoped lang="scss">
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-5);
-}
+.exp-grid {
+  display: grid;
+  gap: var(--s-4);
 
-.card {
-  @include glass();
-  border-radius: var(--r-lg);
-  padding: clamp(var(--s-5), 4vw, var(--s-7));
-}
-
-.card-company {
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  margin-bottom: var(--s-4);
-}
-
-.role {
-  &:not(:last-child) {
-    margin-bottom: var(--s-5);
-    padding-bottom: var(--s-5);
-    border-bottom: 1px solid var(--glass-border);
+  @include mq(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mq(lg) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.role-head {
+.exp-card {
+  @include glass();
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--s-2);
+  flex-direction: column;
+  gap: var(--s-4);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  transition:
+    transform var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg), inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-inner);
+  }
+
+  @include reduce-motion {
+    transition: none;
+    &:hover {
+      transform: none;
+    }
+  }
 }
 
-.role-title {
-  font-weight: 600;
+.exp-company {
+  font-family: var(--f-sans);
+  font-weight: 700;
   font-size: 1.15rem;
+  line-height: 1.15;
+  color: var(--text);
 }
 
-.role-period {
-  font-size: 12px;
-  color: var(--accent-text);
-  white-space: nowrap;
-}
-
-.role-bullets {
+.exp-role-block {
   display: flex;
   flex-direction: column;
   gap: var(--s-2);
-  margin-top: var(--s-3);
+}
+
+.exp-role {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.exp-period {
+  align-self: flex-start;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.exp-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
 
   li {
     position: relative;
     padding-left: var(--s-4);
     color: var(--muted);
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
 
     &::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 10px;
+      top: 8px;
       width: 5px;
       height: 5px;
       border-radius: 50%;

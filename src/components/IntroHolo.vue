@@ -39,6 +39,18 @@ const focus = [
           <li v-for="f in focus" :key="f">{{ f }}</li>
         </ul>
       </div>
+
+      <!-- track record (right, below skills) -->
+      <div class="panel panel-proof">
+        <span class="lead lead-left" aria-hidden="true"></span>
+        <p class="panel-h mono">Track Record</p>
+        <ul class="stats">
+          <li v-for="s in profile.stats.slice(0, 1)" :key="s.label">
+            <span class="stat-v">{{ s.value }}</span>
+            <span class="stat-l">{{ s.label }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -129,9 +141,16 @@ const focus = [
 }
 .panel-skills {
   @include mq(lg) {
-    top: 28%;
+    top: 24%;
     right: 6%;
     min-width: 15rem;
+  }
+}
+.panel-proof {
+  @include mq(lg) {
+    top: 58%;
+    right: 15%;
+    min-width: 10rem;
   }
 }
 
@@ -158,11 +177,15 @@ const focus = [
 .panel-skills {
   animation: floaty-c 4.6s ease-in-out infinite 0.3s;
 }
+.panel-proof {
+  animation: floaty-b 5.4s ease-in-out infinite 1.1s;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .panel-name,
   .panel-bio,
-  .panel-skills {
+  .panel-skills,
+  .panel-proof {
     animation: none;
   }
 }
@@ -257,6 +280,33 @@ const focus = [
       transform: rotate(45deg);
     }
   }
+}
+
+.stats {
+  display: flex;
+  gap: var(--s-5);
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+.stat-v {
+  font-family: var(--f-manga);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1;
+  color: #fff;
+  -webkit-text-stroke: 1px var(--manga-ink);
+  paint-order: stroke fill;
+}
+.stat-l {
+  font-size: 11px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--holo-cream);
+  max-width: 6rem;
 }
 
 </style>
