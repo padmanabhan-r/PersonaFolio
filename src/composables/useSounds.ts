@@ -5,7 +5,7 @@ import clickUrl from "@/assets/audio/click.mp3";
 // Global sound state (shared with the header toggle). Music + click SFX on by default.
 export const soundsEnabled = ref(true);
 
-const MUSIC_VOLUME = 0.25;
+const MUSIC_VOLUME = 0.02;
 const CLICK_VOLUME = 0.5;
 
 export const useSounds = () => {

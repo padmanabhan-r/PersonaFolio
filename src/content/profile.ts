@@ -16,8 +16,7 @@ export const profile = {
     "Over a decade turning business objectives into production-grade AI products across automotive, aerospace, banking, retail, and research. I work across architecture, delivery, and adoption — equally at home in design reviews and in the codebase.",
   ],
   stats: [
-    { value: "13+", label: "years in technology" },
-    { value: "5+", label: "years in AI/ML" },
+    { value: "13+", label: "years in tech & AI" },
     { value: "$1M+", label: "measurable impact" },
     { value: "11", label: "ElevenHacks builds" },
   ],

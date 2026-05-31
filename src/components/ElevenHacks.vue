@@ -38,7 +38,7 @@ const filtered = computed(() =>
       <Reveal class="head">
         <p class="eyebrow">ElevenHacks</p>
         <h2 class="section-title">Eleven AI builds, one hack at a time.</h2>
-        <p class="sub">Voice-native and agentic projects built on ElevenLabs and friends — open any card to dive in.</p>
+        <p class="sub">Real products with real purpose — built to scale, not hackathon toys that die after the demo. Open any card to dive in.</p>
       </Reveal>
 
       <Reveal :delay="0.1">

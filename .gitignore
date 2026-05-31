@@ -60,6 +60,9 @@ misc/
 handoff/
 design/
 
+# Private — personal agent config (prompt, knowledge base, tools). Local-only.
+agent/
+
 # Media binaries (keep heavy audio/video out of git)
 *.mp3
 *.wav

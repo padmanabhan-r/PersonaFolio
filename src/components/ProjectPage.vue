@@ -37,10 +37,6 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
       </div>
 
       <div class="container pmain">
-        <div class="pmedia">
-          <img :src="project.image" :alt="project.title" />
-        </div>
-
         <div class="pinfo">
           <p class="pkicker mono">ElevenHacks · build</p>
           <h1 class="phero-title">{{ project.title }}</h1>
@@ -52,6 +48,10 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
           <div v-if="project.live" class="phero-actions">
             <a class="mbtn-gold" :href="project.live" target="_blank" rel="noopener" data-cursor="visit">Live view →</a>
           </div>
+        </div>
+
+        <div class="pmedia">
+          <img :src="project.image" :alt="project.title" />
         </div>
       </div>
 

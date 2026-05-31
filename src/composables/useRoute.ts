@@ -23,7 +23,7 @@ const lockNav = () => {
   navLockTimer = window.setTimeout(() => {
     navLock = false;
     navLockTimer = null;
-  }, 1200);
+  }, 2600);
 };
 
 const projectFromPath = (): string | null => {
@@ -56,14 +56,14 @@ export const closeProject = () => {
 };
 
 /** Navigate to a section by id or alias: updates the URL and smooth-scrolls. */
-export const goToSection = (idOrAlias: string): boolean => {
+export const goToSection = (idOrAlias: string, duration = 1.1): boolean => {
   const section = getSection(idOrAlias);
   if (!section) return false;
   activeSlug.value = null; // close any open overlay
   lockNav();
   const path = `/${section.id}`;
   if (window.location.pathname !== path) window.history.pushState({}, "", path);
-  scrollToTarget("#" + section.elementId);
+  scrollToTarget("#" + section.elementId, duration);
   return true;
 };
 

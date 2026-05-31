@@ -1,6 +1,5 @@
 import { onMounted, onUnmounted } from "vue";
 import { openProject, goToSection, goHome } from "./useRoute";
-import { slowScrollThrough } from "./useScroll";
 import { getSection, SECTION_IDS } from "@/content/sections";
 import { projectIds } from "@/content/projects";
 
@@ -31,9 +30,8 @@ export const useDidAgent = () => {
     if (!isObj(raw)) return fail("invalid_args");
     const section = getSection(String(raw.section_id ?? ""));
     if (!section) return fail("unknown_section", { available: SECTION_IDS });
-    goToSection(section.id);
-    // Let the jump settle, then slowly glide through the section while the agent talks.
-    window.setTimeout(() => slowScrollThrough("#" + section.elementId), 1300);
+    // Navigate to the section top (no auto-scroll-through).
+    goToSection(section.id, 2);
     return ok({ section_id: section.id });
   };
 
@@ -41,7 +39,6 @@ export const useDidAgent = () => {
     if (!isObj(raw)) return fail("invalid_args");
     const slug = String(raw.slug ?? "");
     if (!openProject(slug)) return fail("unknown_project", { available: projectIds });
-    window.setTimeout(() => slowScrollThrough(".project"), 1300);
     return ok({ slug });
   };
 
@@ -75,7 +72,10 @@ export const useDidAgent = () => {
     scriptEl.src = EMBED_SRC;
     scriptEl.setAttribute("data-name", "did-agent");
     scriptEl.setAttribute("data-mode", "fabio");
+    scriptEl.setAttribute("data-monitor", "true");
+    scriptEl.setAttribute("data-orientation", "horizontal");
     scriptEl.setAttribute("data-position", "right");
+    scriptEl.setAttribute("data-open-mode", "compact");
     scriptEl.setAttribute("data-client-key", CLIENT_KEY);
     scriptEl.setAttribute("data-agent-id", AGENT_ID);
     document.body.appendChild(scriptEl);

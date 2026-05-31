@@ -11,9 +11,9 @@ const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /** Smooth-scroll to a section element by id (or 0 for top). */
-export const scrollToTarget = (target: string | number) => {
+export const scrollToTarget = (target: string | number, duration = 1.1) => {
   if (lenis.value) {
-    lenis.value.scrollTo(target as any, { offset: 0, duration: 1.1 });
+    lenis.value.scrollTo(target as any, { offset: 0, duration });
   } else if (typeof target === "number") {
     window.scrollTo({ top: target, behavior: "smooth" });
   } else {
@@ -31,7 +31,7 @@ export const cancelAutoScroll = () => teardownAuto?.();
  * used after the D-ID agent navigates so content reveals while it talks.
  * Linear, ~`pxPerSec` reading pace; any user input cancels it.
  */
-export const slowScrollThrough = (selector: string, pxPerSec = 60) => {
+export const slowScrollThrough = (selector: string, pxPerSec = 32) => {
   const l = lenis.value;
   if (!l || typeof window === "undefined") return;
   if (prefersReducedMotion()) return;
