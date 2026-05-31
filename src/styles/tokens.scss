@@ -1,0 +1,92 @@
+@use "./mixins.scss" as *;
+
+:root {
+  /* ── warm-light glass palette ── */
+  --bg: #ece4d6;
+  --bg-2: #f3ede1;
+  --text: #1a1208;
+  --muted: #5a4e3c;
+  --faint: #8a7e6e;
+
+  --accent: #c79a3a; /* amber gold */
+  --accent-ink: #2a1d05; /* dark text to sit on gold fills */
+  --accent-text: #6f520d; /* deeper gold for text on cream (AA contrast) */
+  --accent-soft: #e6cd86;
+  --accent-2: #b07d2a; /* warm gold-brown for second glow */
+
+  /* glass primitives */
+  --glass-bg: rgba(255, 253, 248, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(80, 50, 20, 0.12);
+  --glass-border-soft: rgba(80, 50, 20, 0.07);
+  --glass-edge: rgba(255, 255, 255, 0.6);
+  --glass-inner: rgba(255, 255, 255, 0.32);
+
+  /* warm shadows */
+  --shadow-sm: 0 1px 2px rgba(60, 30, 10, 0.06), 0 4px 12px rgba(60, 30, 10, 0.04);
+  --shadow-md: 0 4px 16px rgba(60, 30, 10, 0.08), 0 12px 40px rgba(60, 30, 10, 0.06);
+  --shadow-lg: 0 8px 32px rgba(60, 30, 10, 0.1), 0 24px 80px rgba(60, 30, 10, 0.1);
+
+  /* warm gradient blobs */
+  --blob-1: rgba(199, 154, 58, 0.34);
+  --blob-2: rgba(232, 196, 120, 0.3);
+  --blob-3: rgba(255, 224, 170, 0.32);
+
+  /* type — manga-forward: Bangers titles, Comic Neue body, mono labels */
+  --f-display: "Bangers", "Anton", system-ui, cursive; /* big titles */
+  --f-sans: "Comic Neue", "Space Grotesk", system-ui, sans-serif; /* body */
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --f-manga: "Bangers", "Anton", system-ui, cursive; /* == display; swap order to dial down */
+
+  /* manga / comic ink + sticky-note tones (anime restyle) */
+  --manga-ink: #1c1206;
+  --sticky-1: #f4dd82;
+  --sticky-2: #f6c89a;
+
+  /* warm-gold hologram (page 2 HUD) */
+  --gold-line: #f3c14b;
+  --gold-glow: rgba(243, 193, 75, 0.35);
+  --holo-cream: #f4ecd6;
+  --holo-cream-dim: #d8c79b;
+  --holo-panel: rgba(26, 16, 4, 0.5);
+
+  /* spacing (8pt) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* radius */
+  --r-sm: 11px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* layout */
+  --container: 1240px;
+  --gap: clamp(20px, 4vw, 40px);
+  --section-y: clamp(90px, 12vw, 170px);
+  --outer: clamp(20px, 5vw, 48px);
+  --header-h: 64px;
+
+  /* blue hologram page-2 (from the 3D site) */
+  --holo-top: rgb(0, 53, 133);
+  --holo-bottom: rgba(0, 82, 145, 0.6);
+  --holo-bg: #04122e;
+  --cyan: rgb(52, 191, 255);
+  --cyan-text: #e1f5ff;
+  --cyan-muted: #8fc4e0;
+
+  /* motion */
+  --t-fast: 0.25s;
+  --t-mid: 0.5s;
+  --t-slow: 0.8s;
+  --t-route: 0.55s;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-route: cubic-bezier(0.6, 0, 0.25, 1);
+}
