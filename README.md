@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/content/images/hero.png" alt="PersonaFolio — a conversational AI portfolio. Talk to a manga avatar that answers questions and navigates the site by voice. Powered by D-ID and ElevenLabs." width="100%" />
+  <img src="images/ss-1.jpg" alt="PersonaFolio hero — @LIMB, a manga-styled conversational AI portfolio. Talk to the avatar (bottom-right); it answers and navigates the site by voice. Powered by D-ID and ElevenLabs." width="100%" />
 </p>
 
 # PersonaFolio (Conversational AI Portfolio)
