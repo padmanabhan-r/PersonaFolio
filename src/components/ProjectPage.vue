@@ -38,7 +38,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
 
       <div class="container pmain">
         <div class="pinfo">
-          <p class="pkicker mono">ElevenHacks · build</p>
+          <p class="pkicker mono">ElevenHacks · Week {{ project.week }}<template v-if="project.award"> {{ project.award }}</template></p>
           <h1 class="phero-title">{{ project.title }}</h1>
           <p class="phero-blurb">{{ project.blurb }}</p>
           <div class="phero-tags">

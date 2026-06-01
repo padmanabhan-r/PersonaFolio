@@ -82,37 +82,14 @@ export const experience: ExperienceEntry[] = [
   },
 ];
 
+// Concrete tech/tools only — the high-level themes (GenAI, agentic, ML, cloud) live on the About page.
 export const skills: SkillGroup[] = [
-  { category: "Programming", items: ["Python", "TypeScript", "JavaScript", "SQL"] },
-  {
-    category: "AI & Machine Learning",
-    items: [
-      "LLMs",
-      "RAG",
-      "Agentic AI Systems",
-      "LangChain",
-      "LangGraph",
-      "CrewAI",
-      "PyTorch",
-      "TensorFlow",
-      "Scikit-Learn",
-      "OpenAI APIs",
-      "Hugging Face",
-      "Vertex AI",
-      "Claude Code",
-    ],
-  },
-  { category: "MLOps & Observability", items: ["Arize AI", "Comet Opik", "Model Evaluation"] },
-  {
-    category: "Cloud & Infrastructure",
-    items: ["GCP", "Kubernetes", "OpenShift", "Docker", "Terraform", "CI/CD", "Tekton", "ArgoCD"],
-  },
-  {
-    category: "Databases & Search",
-    items: ["PostgreSQL", "BigQuery", "MongoDB", "Teradata", "Chroma", "Qdrant", "Elasticsearch", "Neo4j"],
-  },
-  { category: "Backend", items: ["FastAPI"] },
-  { category: "Product & Visualization", items: ["Streamlit", "Gradio", "React", "Power BI", "Tableau", "Qlik"] },
+  { category: "Languages & APIs", items: ["Python", "TypeScript", "SQL", "FastAPI"] },
+  { category: "Agents & GenAI", items: ["LangChain", "LangGraph", "CrewAI", "Hermes Agent", "OpenClaw", "Claude Code", "ElevenLabs"] },
+  { category: "ML & Evaluation", items: ["PyTorch", "TensorFlow", "Scikit-Learn", "Hugging Face", "Arize AI", "Comet Opik"] },
+  { category: "Cloud & DevOps", items: ["GCP", "Vertex AI", "Cloudflare", "Kubernetes", "Docker", "Terraform", "CI/CD"] },
+  { category: "Data & Search", items: ["PostgreSQL", "MongoDB", "Chroma", "Qdrant", "turbopuffer", "Elasticsearch", "Neo4j"] },
+  { category: "Product & UI", items: ["React", "Streamlit", "Gradio", "Power BI", "Tableau"] },
 ];
 
 export const education: EducationEntry[] = [

@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, ref } from "vue";
+import { nextTick, onMounted, onUnmounted, ref } from "vue";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,6 +19,22 @@ export const scrollToTarget = (target: string | number, duration = 1.1) => {
   } else {
     document.querySelector(target)?.scrollIntoView({ behavior: "smooth" });
   }
+};
+
+/**
+ * Scroll to a target after the home view re-appears from under a project page.
+ * Home is hidden with `display:none` (v-show) while a project shows, which collapses
+ * Lenis's scroll limit — so `lenis.resize()` MUST run before scrolling or the target
+ * gets clamped against the stale (tiny) max and we land on the hero.
+ */
+export const scrollToSectionAfterHome = (target: string | number, duration = 1.1) => {
+  nextTick(() =>
+    requestAnimationFrame(() => {
+      lenis.value?.resize(); // recompute scroll limit now that home is visible again
+      ScrollTrigger.refresh(); // re-pin IntroStage so section offsets are correct
+      requestAnimationFrame(() => scrollToTarget(target, duration));
+    }),
+  );
 };
 
 let teardownAuto: (() => void) | null = null;

@@ -14,6 +14,13 @@ export const TAG_LABELS: Record<string, string> = {
   postgresql: "PostgreSQL",
   javascript: "JavaScript",
   did: "D-ID",
+  replit: "Replit",
+  turbopuffer: "turbopuffer",
+  kiro: "Kiro",
+  zed: "Zed",
+  v0: "v0",
+  cursor: "Cursor",
+  "speech-engine": "Speech Engine",
 };
 
 export const tagLabel = (key: string): string => TAG_LABELS[key] ?? key;

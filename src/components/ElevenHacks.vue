@@ -33,7 +33,8 @@ const filtered = computed(() =>
 </script>
 
 <template>
-  <section id="elevenhacks" class="section">
+  <section id="elevenhacks" class="section eh-sec">
+    <span class="paper-note mono" aria-hidden="true">★</span>
     <div class="container">
       <Reveal class="head">
         <p class="eyebrow">ElevenHacks</p>
@@ -63,8 +64,32 @@ const filtered = computed(() =>
 </template>
 
 <style scoped lang="scss">
+.eh-sec {
+  @include manga-paper;
+}
+
+/* keep copy above the decorative star stamp */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* tilted comic star stamp in the gutter */
+.paper-note {
+  @include manga-note(6deg);
+}
+
 .head {
   margin-bottom: var(--s-5);
+}
+
+/* sticky-note label (matches the other sections) */
+.eyebrow {
+  @include manga-sticky;
+
+  &::before {
+    display: none;
+  }
 }
 
 .sub {
@@ -87,25 +112,32 @@ const filtered = computed(() =>
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--manga-ink);
   padding: 9px 17px;
   border-radius: 999px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
+  border: 2px solid var(--manga-ink);
+  background: #fff;
+  box-shadow: 2px 2px 0 var(--manga-ink);
   transition:
-    color 0.2s var(--ease),
-    background 0.2s var(--ease),
-    border-color 0.2s var(--ease);
+    transform var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease),
+    background var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
 
   &:hover {
-    color: var(--text);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--manga-ink);
   }
 
   &.active {
     color: var(--accent-ink);
     background: var(--accent);
-    border-color: transparent;
+  }
+
+  @include reduce-motion {
+    &:hover {
+      transform: none;
+    }
   }
 }
 

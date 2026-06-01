@@ -4,7 +4,8 @@ import Reveal from "./Reveal.vue";
 </script>
 
 <template>
-  <section id="experience" class="section">
+  <section id="experience" class="section exp-sec">
+    <span class="paper-note mono" aria-hidden="true">★</span>
     <div class="container">
       <Reveal>
         <p class="eyebrow">Experience</p>
@@ -30,6 +31,30 @@ import Reveal from "./Reveal.vue";
 </template>
 
 <style scoped lang="scss">
+.exp-sec {
+  @include manga-paper;
+}
+
+/* keep copy above the decorative star stamp */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* tilted comic star stamp in the gutter */
+.paper-note {
+  @include manga-note(6deg);
+}
+
+/* sticky-note label (matches the Skills "Stack" badge) */
+.eyebrow {
+  @include manga-sticky;
+
+  &::before {
+    display: none;
+  }
+}
+
 .exp-grid {
   display: grid;
   gap: var(--s-4);
@@ -43,20 +68,19 @@ import Reveal from "./Reveal.vue";
 }
 
 .exp-card {
-  @include glass();
+  @include manga-card();
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--s-4);
-  border-radius: var(--r-lg);
   padding: var(--s-5);
   transition:
     transform var(--t-fast) var(--ease),
     box-shadow var(--t-fast) var(--ease);
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg), inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-inner);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--manga-ink);
   }
 
   @include reduce-motion {
@@ -92,10 +116,13 @@ import Reveal from "./Reveal.vue";
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-text);
-  border: 1px solid var(--glass-border);
-  border-radius: 999px;
+  color: var(--manga-ink);
+  background: var(--sticky-1);
+  border: 1.5px solid var(--manga-ink);
+  box-shadow: 2px 2px 0 var(--manga-ink);
+  border-radius: var(--r-sm);
   padding: 2px 10px;
+  transform: rotate(-1.5deg);
 }
 
 .exp-bullets {

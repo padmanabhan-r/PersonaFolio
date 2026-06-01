@@ -1,8 +1,7 @@
 import { onMounted, onUnmounted, ref } from "vue";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projectIds } from "@/content/projects";
 import { getSection } from "@/content/sections";
-import { scrollToTarget } from "./useScroll";
+import { scrollToTarget, scrollToSectionAfterHome } from "./useScroll";
 
 // URL-driven routing.
 //   /                → home (hero)
@@ -50,18 +49,12 @@ export const goToSection = (idOrAlias: string, duration = 1.1): boolean => {
   const path = `/${section.id}`;
   if (window.location.pathname !== path) window.history.pushState({}, "", path);
 
-  const doScroll = () => scrollToTarget("#" + section.elementId, duration);
   if (wasOnProject) {
-    // Home was hidden (v-show) while the project page showed — wait for it to re-render
-    // and refresh the pinned ScrollTriggers before scrolling, or we'd land on the hero.
-    requestAnimationFrame(() =>
-      window.setTimeout(() => {
-        ScrollTrigger.refresh();
-        doScroll();
-      }, 120),
-    );
+    // Home was hidden (v-show) under the project page — recompute Lenis's scroll limit
+    // and re-pin before scrolling, or the target clamps to the stale max and we hit the hero.
+    scrollToSectionAfterHome("#" + section.elementId, duration);
   } else {
-    doScroll();
+    scrollToTarget("#" + section.elementId, duration);
   }
   return true;
 };
@@ -79,15 +72,9 @@ export const useRoute = () => {
     activeSlug.value = proj;
     if (proj) return;
     // Home may have just been re-shown (v-show) after leaving a project page —
-    // wait a frame, refresh ScrollTrigger pins, then scroll to the target.
+    // recompute Lenis + pins, then scroll to the target (or top).
     const sec = sectionFromPath();
-    requestAnimationFrame(() =>
-      window.setTimeout(() => {
-        ScrollTrigger.refresh();
-        if (sec) scrollToTarget("#" + getSection(sec)!.elementId);
-        else scrollToTarget(0);
-      }, 120),
-    );
+    scrollToSectionAfterHome(sec ? "#" + getSection(sec)!.elementId : 0);
   };
 
   onMounted(() => {
