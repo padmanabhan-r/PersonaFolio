@@ -2,6 +2,10 @@
 import { profile } from "@/content/profile";
 import skillsImg from "@/content/images/skills.png";
 
+const skillsVid = "/skills.mp4";
+// Static hologram still under reduced-motion; otherwise the looping clip plays.
+const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // High-level focus themes (summary). Full breakdown lives on the Skills page.
 const focus = [
   "Generative AI & LLM Applications",
@@ -14,7 +18,18 @@ const focus = [
 
 <template>
   <section id="holo" class="holo">
-    <img class="holo-bg" :src="skillsImg" alt="" aria-hidden="true" />
+    <video
+      v-if="!reduceMotion"
+      class="holo-bg"
+      :src="skillsVid"
+      :poster="skillsImg"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+    ></video>
+    <img v-else class="holo-bg" :src="skillsImg" alt="" aria-hidden="true" />
     <div class="holo-scrim" aria-hidden="true"></div>
 
     <div class="holo-grid">

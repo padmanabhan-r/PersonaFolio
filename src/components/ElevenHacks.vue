@@ -4,18 +4,19 @@ import { projects } from "@/content/projects";
 import Reveal from "./Reveal.vue";
 import ProjectCard from "./ProjectCard.vue";
 
-const CATEGORY: Record<string, string> = {
-  killmystartup: "voice",
-  vault: "games",
-  eleventales: "voice",
-  grooveforge: "tools",
-  stringiq: "tools",
-  "rhythm-kingdom": "games",
-  hnplusplus: "tools",
-  beacon: "voice",
-  multiverse: "tools",
-  "hermes-xi": "agentic",
-  personafolio: "agentic",
+// A build can sit in more than one bucket (most voice-first builds are also tools/agentic/games).
+const CATEGORY: Record<string, string[]> = {
+  killmystartup: ["voice"],
+  vault: ["games", "voice"],
+  eleventales: ["voice"],
+  grooveforge: ["tools", "music"],
+  stringiq: ["tools", "voice", "music"],
+  "rhythm-kingdom": ["games"],
+  hnplusplus: ["tools", "voice"],
+  beacon: ["voice"],
+  multiverse: ["tools", "music"],
+  "hermes-xi": ["agentic", "voice"],
+  personafolio: ["agentic", "voice"],
 };
 
 const FILTERS = [
@@ -24,11 +25,12 @@ const FILTERS = [
   { id: "agentic", label: "Agentic" },
   { id: "tools", label: "Tools" },
   { id: "games", label: "Games" },
+  { id: "music", label: "Music" },
 ];
 
 const active = ref("all");
 const filtered = computed(() =>
-  active.value === "all" ? projects : projects.filter((p) => CATEGORY[p.slug] === active.value),
+  active.value === "all" ? projects : projects.filter((p) => CATEGORY[p.slug]?.includes(active.value)),
 );
 </script>
 

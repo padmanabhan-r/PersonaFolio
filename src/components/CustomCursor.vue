@@ -41,10 +41,11 @@ const spawnToken = (x: number, y: number) => {
   c.appendChild(el);
   const anim = el.animate(
     [
-      { opacity: 0.4, transform: `translate(-50%, -50%) rotate(${rot}deg)` },
+      { opacity: 0.75, transform: `translate(-50%, -50%) rotate(${rot}deg)` },
+      { opacity: 0.75, offset: 0.55, transform: `translate(calc(-50% + ${ox * 0.5}px), -90%) rotate(${rot}deg)` },
       { opacity: 0, transform: `translate(calc(-50% + ${ox}px), -130%) rotate(${rot}deg)` },
     ],
-    { duration: 1500, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+    { duration: 2100, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
   );
   anim.onfinish = () => el.remove();
 };
@@ -165,12 +166,12 @@ onUnmounted(() => {
   transform: translate(-50%, -50%);
   /* keep the floating code monospace even though --f-mono is now the manga label font */
   font-family: "IBM Plex Mono", ui-monospace, monospace;
-  font-size: 10.5px;
-  font-weight: 400;
+  font-size: 11.5px;
+  font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--accent-text);
   white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(28, 18, 6, 0.18);
+  text-shadow: 0 1px 3px rgba(28, 18, 6, 0.3);
   will-change: transform, opacity;
 }
 </style>

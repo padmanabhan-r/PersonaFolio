@@ -2,11 +2,26 @@
 import { profile } from "@/content/profile";
 import Reveal from "./Reveal.vue";
 import connectBg from "@/content/images/connect.png";
+
+const connectVid = "/connect.mp4";
+// Static still under reduced-motion; otherwise the looping clip plays.
+const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 </script>
 
 <template>
   <section id="contact" class="contact">
-    <img class="contact-bg" :src="connectBg" alt="" aria-hidden="true" />
+    <video
+      v-if="!reduceMotion"
+      class="contact-bg"
+      :src="connectVid"
+      :poster="connectBg"
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-hidden="true"
+    ></video>
+    <img v-else class="contact-bg" :src="connectBg" alt="" aria-hidden="true" />
     <div class="contact-scrim" aria-hidden="true"></div>
     <div class="container contact-inner">
       <Reveal>
