@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted, ref, watch } from "vue";
-import musicUrl from "@/assets/audio/Portfolio_Flow_2026-05-31T040126.mp3";
+import musicUrl from "@/assets/audio/Portfolio_Echoes_v2.mp3";
 import clickUrl from "@/assets/audio/click.mp3";
 
 // Global sound state (shared with the header toggle). Music + click SFX on by default.

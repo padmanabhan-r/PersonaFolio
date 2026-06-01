@@ -116,8 +116,8 @@ onUnmounted(() => window.removeEventListener("scroll", onScroll));
 
 .hot {
   position: absolute;
-  top: -7px;
-  right: -7px;
+  top: -6px;
+  right: 3px;
   font-family: var(--f-mono);
   font-size: 8px;
   font-weight: 700;

@@ -58,6 +58,36 @@ defineProps<{ project: Project }>();
   }
 }
 
+/* gentle floating — staggered amplitudes/durations so neighbours don't bob in unison (matches the About HUD) */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-11px); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.pcard:nth-child(3n + 1) {
+  animation: float-1 5.6s ease-in-out infinite;
+}
+.pcard:nth-child(3n + 2) {
+  animation: float-3 6s ease-in-out infinite 0.6s;
+}
+.pcard:nth-child(3n) {
+  animation: float-2 6.8s ease-in-out infinite 1s;
+}
+
+@include reduce-motion {
+  .pcard {
+    animation: none;
+  }
+}
+
 .pcard-media {
   position: relative;
   aspect-ratio: 16 / 9;

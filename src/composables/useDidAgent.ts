@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { openProject, goToSection, goHome } from "./useRoute";
 import { getSection, SECTION_IDS } from "@/content/sections";
 import { projectIds } from "@/content/projects";
@@ -17,6 +17,9 @@ declare global {
     __didTools?: Record<string, ClientToolHandler>;
   }
 }
+
+// True once the embed's API is live (avatar present). Gates the "click to talk" callout.
+export const avatarReady = ref(false);
 
 const ok = (extra: Record<string, unknown> = {}) => JSON.stringify({ success: true, ...extra });
 const fail = (error: string, extra: Record<string, unknown> = {}) => JSON.stringify({ success: false, error, ...extra });
@@ -57,6 +60,7 @@ export const useDidAgent = () => {
     const reg = window.DID_AGENTS_API?.functions?.registerClientTool;
     if (!reg) return false;
     for (const [name, handler] of Object.entries(TOOLS)) reg(name, handler);
+    avatarReady.value = true;
     return true;
   };
 
@@ -95,5 +99,6 @@ export const useDidAgent = () => {
     if (pollTimer !== null) window.clearTimeout(pollTimer);
     if (scriptEl?.parentNode) scriptEl.parentNode.removeChild(scriptEl);
     if (import.meta.env.DEV) delete window.__didTools;
+    avatarReady.value = false;
   });
 };

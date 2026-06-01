@@ -79,6 +79,36 @@ import Reveal from "./Reveal.vue";
   }
 }
 
+/* gentle floating — staggered amplitudes/durations so neighbours don't bob in unison (matches the About HUD) */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-11px); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.grid :deep(.reveal:nth-child(3n + 1)) .card {
+  animation: float-1 5.6s ease-in-out infinite;
+}
+.grid :deep(.reveal:nth-child(3n + 2)) .card {
+  animation: float-3 6s ease-in-out infinite 0.6s;
+}
+.grid :deep(.reveal:nth-child(3n)) .card {
+  animation: float-2 6.8s ease-in-out infinite 1s;
+}
+
+@include reduce-motion {
+  .grid :deep(.reveal) .card {
+    animation: none;
+  }
+}
+
 .degree {
   font-size: 1.6rem;
 }

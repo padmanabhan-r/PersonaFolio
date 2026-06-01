@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import CustomCursor from "./components/CustomCursor.vue";
+import AvatarCallout from "./components/AvatarCallout.vue";
 import AppHeader from "./components/AppHeader.vue";
 import IntroStage from "./components/IntroStage.vue";
 import Experience from "./components/Experience.vue";
@@ -26,6 +27,7 @@ const onProject = computed(() => activeSlug.value !== null);
 
 <template>
   <CustomCursor />
+  <AvatarCallout />
   <!-- Home stays mounted (v-show) so scroll + GSAP state survive a project round-trip. -->
   <div v-show="!onProject" class="home-wrapper">
     <AppHeader />

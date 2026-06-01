@@ -92,6 +92,36 @@ import Reveal from "./Reveal.vue";
   padding: var(--s-5);
 }
 
+/* gentle floating — staggered amplitudes/durations so neighbours don't bob in unison (matches the About HUD) */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-11px); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.sgrid :deep(.reveal:nth-child(3n + 1)) .sgroup {
+  animation: float-1 5.6s ease-in-out infinite;
+}
+.sgrid :deep(.reveal:nth-child(3n + 2)) .sgroup {
+  animation: float-3 6s ease-in-out infinite 0.6s;
+}
+.sgrid :deep(.reveal:nth-child(3n)) .sgroup {
+  animation: float-2 6.8s ease-in-out infinite 1s;
+}
+
+@include reduce-motion {
+  .sgrid :deep(.reveal) .sgroup {
+    animation: none;
+  }
+}
+
 .sgroup-t {
   font-family: var(--f-sans);
   font-weight: 600;
