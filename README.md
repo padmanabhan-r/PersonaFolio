@@ -4,7 +4,7 @@
 
 # PersonaFolio (Conversational AI Portfolio)
 
-**Don't read a portfolio — talk to it. A manga-styled avatar of me answers questions and drives the page by voice: it scrolls to the right section, opens a project, and explains it. Powered by D-ID and ElevenLabs.**
+**Don't read a résumé — talk to it. A manga-styled avatar of me answers questions and drives the page by voice: it scrolls to the right section, opens a project, and explains it. Talk to me, learn everything you need — then interview me. Powered by D-ID and ElevenLabs.**
 
 > Built for ElevenHacks 2026 (ElevenLabs + D-ID).
 
@@ -17,9 +17,9 @@
 [![Vercel](https://img.shields.io/badge/Vercel-Frontend-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com)
 [![ElevenHacks](https://img.shields.io/badge/Built%20for-ElevenHacks-FF6B35?style=flat-square&logoColor=white)](https://elevenlabs.io)
 
-> A portfolio is a stack of static pages a recruiter skims and forgets. A résumé can't answer a follow-up.
+> A résumé is a stack of static pages a recruiter skims and forgets, and it can't answer a follow-up.
 >
-> **PersonaFolio turns the portfolio into a conversation.** Ask the avatar anything — my background, a specific skill, a project's internals, how to reach me — and it walks you there on screen and answers in the first person. The avatar isn't decoration bolted on; voice-driven navigation is the interface.
+> **PersonaFolio turns the résumé into a conversation.** Ask the avatar anything — my background, a specific skill, a project's internals, how to reach me — and it walks you there on screen and answers in the first person. Come away knowing everything you'd want to ask, before you ever schedule the interview. The avatar isn't decoration bolted on; voice-driven navigation is the interface.
 
 ---
 
