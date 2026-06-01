@@ -3,7 +3,9 @@ import { computed, ref, onMounted, onUnmounted } from "vue";
 import { profile } from "@/content/profile";
 import { goToSection } from "@/composables/useRoute";
 import heroBg from "@/content/images/hero.png";
-import heroVid from "@/content/images/hero.mp4";
+
+// Served from /public (not bundled — kept out of the JS graph so the gitignored-by-default mp4 doesn't break the build).
+const heroVid = "/hero.mp4";
 
 // Static poster under reduced-motion; otherwise the looping clip plays.
 const reduceMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

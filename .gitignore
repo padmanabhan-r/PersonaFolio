@@ -73,6 +73,8 @@ agent/
 *.mp4
 *.mov
 *.webm
+# …except the hero clip, which ships with the build (referenced from /public)
+!public/hero.mp4
 # ...but bundled UI audio is project source — Vite imports these, so keep them tracked
 !src/assets/audio/
 !src/assets/audio/*.mp3
