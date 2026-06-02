@@ -40,9 +40,8 @@
 
 ## What is PersonaFolio?
 
-A single-page, manga-styled portfolio with a talking avatar embedded in the corner. The Hero
-cross-dissolves into the About hologram inside one pinned stage; Experience, Skills, ElevenHacks,
-Education, and Contact follow as standard scroll sections — plus a standalone page for each of the
+A single-page, manga-styled portfolio with a talking avatar embedded in the corner. Six sections —
+About, Experience, Skills, ElevenHacks, Education, Contact — plus a standalone page for each of the
 eleven ElevenHacks builds. Everything is navigable two ways:
 
 - **By hand** — scroll, click the nav, open a project card.
