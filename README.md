@@ -40,8 +40,9 @@
 
 ## What is PersonaFolio?
 
-A single-page, manga-styled portfolio with a talking avatar embedded in the corner. Six sections —
-About, Experience, Skills, ElevenHacks, Education, Contact — plus a standalone page for each of the
+A single-page, manga-styled portfolio with a talking avatar embedded in the corner. The Hero
+cross-dissolves into the About hologram inside one pinned stage; Experience, Skills, ElevenHacks,
+Education, and Contact follow as standard scroll sections — plus a standalone page for each of the
 eleven ElevenHacks builds. Everything is navigable two ways:
 
 - **By hand** — scroll, click the nav, open a project card.
@@ -98,6 +99,7 @@ You speak → D-ID avatar (ElevenLabs voice) → its LLM decides to navigate
 | **Manga design system** | Bangers display titles, Comic Neue body, comic panels, sticky-note labels, warm palette; full-bleed scene backgrounds; a dark-gold hologram About page. |
 | **Ambient audio** | Low background music + click SFX with a mute toggle; everything honors `prefers-reduced-motion`. |
 | **Custom cursor** | Golden cursor with a fading code trail. |
+| **Avatar callout** | A golden "Click to talk" nudge with a curved arrow appears once the avatar loads, pointing at the D-ID bubble. |
 | **Graceful degrade** | No avatar credentials? The embed is skipped and the site runs normally. |
 
 ---
@@ -110,7 +112,7 @@ A deliberate manga/anime aesthetic — not a generic AI-slop gradient deck:
   caps for labels.
 - **Surfaces:** warm "liquid-glass" panels, comic-panel buttons with hard offset shadows, sticky-note
   tags, halftone/speed-line accents.
-- **Scenes:** full-bleed illustrated backgrounds on the hero and contact; a gold "hologram HUD"
+- **Scenes:** full-bleed looping video scenes on the hero and contact; a gold "hologram HUD"
   About page with connector callouts.
 - **Motion:** GSAP + ScrollTrigger reveals, a pinned hero→About cross-dissolve, Lenis smooth scroll.
 
@@ -152,6 +154,7 @@ avatar widget is simply skipped.
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Dev server on port **3000** |
+| `npm run typecheck` | TypeScript / Vue type check (`vue-tsc -b`) |
 | `npm run build` | Typecheck + production build to `dist/` |
 | `npm run preview` | Serve the production build |
 | `npm run bootstrap:agent` | Configure the D-ID agent (tools + prompt + client key) |
@@ -169,7 +172,9 @@ DID_AGENT_ID=v2_agt_xxxx npm run bootstrap:agent
 ```
 
 - `agent/prompts/prompt.md` — the system prompt (persona, tools, routing, baked knowledge).
-- `agent/prompts/knowledge-base.txt` — the knowledge document (upload to the D-ID knowledge base).
+- `agent/prompts/knowledge-base.txt` — a parallel human-readable mirror of `prompt.md` (kept for
+  reference; the bootstrap scripts inline `prompt.md` as the LLM `instructions` — this file is not
+  uploaded at runtime).
 - `agent/tools.json` — the three client-tool schemas.
 
 > **Note:** tool-calling requires an **Expressive** presenter. Custom-photo ("talk") avatars render
