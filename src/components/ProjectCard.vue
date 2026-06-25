@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Project } from "@/content/projects";
+import { projectPoints } from "@/content/projects";
 import { openProject } from "@/composables/useRoute";
 import Tag from "./Tag.vue";
 
@@ -21,6 +22,8 @@ defineProps<{ project: Project }>();
         </div>
         <div class="pcard-meta">
           <span v-if="project.award" class="pcard-award">{{ project.award }}</span>
+          <span v-if="project.popular" class="pcard-fav" role="img" aria-label="Most popular">❤️</span>
+          <span class="pcard-pts mono">{{ projectPoints(project) }} pts</span>
           <span class="pcard-week mono">Week {{ project.week }}</span>
         </div>
       </div>
@@ -162,6 +165,25 @@ defineProps<{ project: Project }>();
 .pcard-award {
   font-size: 1.15rem;
   line-height: 1;
+}
+
+/* most-popular heart — inline in the footer meta row */
+.pcard-fav {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* points score badge */
+.pcard-pts {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-ink);
+  background: var(--accent);
+  border: 2px solid var(--manga-ink);
+  box-shadow: 2px 2px 0 var(--manga-ink);
+  padding: 3px 9px;
+  white-space: nowrap;
 }
 
 /* weekly build number — sticky-note badge */

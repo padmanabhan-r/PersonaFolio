@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { projects } from "@/content/projects";
+import { projects, totalPoints } from "@/content/projects";
 import Reveal from "./Reveal.vue";
 import ProjectCard from "./ProjectCard.vue";
 
@@ -42,6 +42,20 @@ const filtered = computed(() =>
         <p class="eyebrow">ElevenHacks</p>
         <h2 class="section-title">Eleven AI builds, one hack at a time.</h2>
         <p class="sub">Real products with real purpose — built to scale, not hackathon toys that die after the demo. Open any card to dive in.</p>
+      </Reveal>
+
+      <Reveal :delay="0.05">
+        <div class="champion">
+          <div class="champ-info">
+            <p class="champ-label mono">ElevenHacks Season 1</p>
+            <p class="champ-title">Champion 🏆</p>
+            <p class="champ-tally mono">{{ projects.length }} builds · 🏆 ×1 first · 🥉 ×2 bronze · ❤️ ×3 popular</p>
+          </div>
+          <div class="champ-score">
+            <span class="champ-pts">{{ totalPoints.toLocaleString() }}</span>
+            <span class="champ-pts-label mono">pts total</span>
+          </div>
+        </div>
       </Reveal>
 
       <Reveal :delay="0.1">
@@ -101,6 +115,68 @@ const filtered = computed(() =>
   color: var(--muted);
   max-width: 48ch;
   margin-top: calc(-1 * var(--s-4));
+}
+
+.champion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  background: var(--accent);
+  border: 3px solid var(--manga-ink);
+  box-shadow: 5px 5px 0 var(--manga-ink);
+  padding: var(--s-4) var(--s-6);
+  margin-bottom: var(--s-5);
+  transform: rotate(-0.4deg);
+}
+
+.champ-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-ink);
+  opacity: 0.7;
+}
+
+.champ-title {
+  font-family: var(--f-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--accent-ink);
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+}
+
+.champ-tally {
+  font-size: 11px;
+  color: var(--accent-ink);
+  opacity: 0.75;
+  margin-top: var(--s-2);
+}
+
+.champ-score {
+  text-align: right;
+  flex: none;
+}
+
+.champ-pts {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--accent-ink);
+  letter-spacing: 0.02em;
+}
+
+.champ-pts-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-ink);
+  opacity: 0.7;
+  margin-top: 4px;
+  text-align: right;
 }
 
 .filters {

@@ -15,6 +15,7 @@ export interface Project {
   slug: string;
   week: number;
   award?: string;
+  popular?: boolean; // selected "most popular" on the ElevenLabs hacks platform
   blurb: string;
   tags: string[];
   image: string;
@@ -56,6 +57,7 @@ export const projects: Project[] = [
     title: "GrooveForge",
     slug: "grooveforge",
     week: 4,
+    popular: true,
     blurb: "An AI toolkit for original music creation — search and forge by feel.",
     tags: ["elevenlabs", "turbopuffer"],
     image: grooveforge,
@@ -66,6 +68,7 @@ export const projects: Project[] = [
     slug: "stringiq",
     week: 5,
     award: "🏆",
+    popular: true,
     blurb: "A real-time AI guitar coach with multi-sensory feedback.",
     tags: ["elevenlabs", "kiro"],
     image: stringiq,
@@ -94,6 +97,7 @@ export const projects: Project[] = [
     slug: "beacon",
     week: 8,
     award: "🥉",
+    popular: true,
     blurb: "A voice-first, hands-free assistant for the visually impaired.",
     tags: ["elevenlabs", "cursor"],
     image: beacon,
@@ -127,6 +131,16 @@ export const projects: Project[] = [
     body: "PersonaFolio is an AI-powered conversational portfolio platform that brings personal brands to life through digital avatars. By combining avatar technology from D-ID with realistic voice interactions from ElevenLabs, PersonaFolio lets visitors have real-time conversations with a portfolio instead of navigating traditional static pages. Visitors can ask about projects, work experience, technical skills, achievements, product decisions, and career journeys; the AI avatar responds naturally, guiding visitors through relevant content while creating a personalized, immersive experience. Whether you're a recruiter evaluating candidates, a founder showcasing achievements, or a professional building a personal brand, PersonaFolio makes discovering someone's story as simple as having a conversation. (This very site is built on the idea.)",
   },
 ];
+
+export function projectPoints(p: Project): number {
+  let pts = 200;
+  if (p.award === "🏆") pts += 400;
+  if (p.award === "🥉") pts += 150;
+  if (p.popular) pts += 200;
+  return pts;
+}
+
+export const totalPoints = projects.reduce((sum, p) => sum + projectPoints(p), 0);
 
 export const projectIds = projects.map((p) => p.slug);
 
