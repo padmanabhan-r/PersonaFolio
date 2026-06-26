@@ -2,7 +2,7 @@
   <img src="images/ss-1.jpg" alt="PersonaFolio hero — @LIMB, a manga-styled conversational AI portfolio. Talk to the avatar (bottom-right); it answers and navigates the site by voice. Powered by D-ID and ElevenLabs." width="100%" />
 </p>
 
-# PersonaFolio (Conversational AI Portfolio)
+# PersonaFolio - Limb - Padmanabhan (Conversational AI Portfolio)
 
 **Don't read a résumé — talk to it. A manga-styled avatar of me answers questions and drives the page by voice: it scrolls to the right section, opens a project, and explains it. Talk to me, learn everything you need — then interview me. Powered by D-ID and ElevenLabs.**
 
