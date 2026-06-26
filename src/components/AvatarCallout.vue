@@ -209,11 +209,12 @@ onUnmounted(() => {
   }
 }
 
-/* smaller embed on phones — tuck higher so it clears the footer CTA */
+/* smaller embed on phones — move left so the embed (bottom-right) is clearly to
+   the right of the callout, keeping the bottom-right arrow direction accurate */
 @media (max-width: 600px) {
   .callout {
-    bottom: 205px;
-    right: 44px;
+    bottom: 190px;
+    right: 110px;
   }
   .arrow {
     width: 74px;
